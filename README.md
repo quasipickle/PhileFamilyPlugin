@@ -1,6 +1,8 @@
 # PhileFamilyPlugin
 A plugin for providing sibling and ancestor records to Phile themes.  By default, Phile provides `{{ pages }}` to theme templates.  This plugin adds `{{ siblings }}` and `{{ ancestors }}`
 
+**Questions? Comments?** Feel free to throw something in the issue tracker
+
 ## Installation
 1. Create the directory `plugins/family`
 2. Download and place  the repository files in that directory.
