@@ -81,10 +81,6 @@ class Family extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 			$active_dir       = dirname($active_dir);
 		}
 
-		#echo '<pre>';
-		#print_r($ancestor_paths);
-
-#		print_r($ancestor_paths);
 		return $ancestor_paths;
 	}
 }
