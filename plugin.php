@@ -28,6 +28,7 @@ class Family extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 		foreach($data['pages'] as $Page){
 			$Page->is_dir  = FALSE;
 			$loop_path     = $Page->getFilePath();
+			$loop_file     = basename($loop_path);
 			$loop_dir      = dirname($loop_path);
 			$loop_granddir = dirname($loop_dir);
 
@@ -37,7 +38,7 @@ class Family extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 			}
 
 			// We've found a sibling directory, so add the index file  from that directory as a sibling
-			if($this->settings['sibling_dirs'] && $this->curr_dir == $loop_granddir){
+			if($this->settings['sibling_dirs'] && $this->curr_dir == $loop_granddir && $loop_file == 'index'.CONTENT_EXT){
 				$Page->is_dir = TRUE;
 				$siblings[]   = $Page;
 			}
