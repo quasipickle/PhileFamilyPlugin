@@ -37,7 +37,7 @@ class Family extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 				$siblings[] = $Page;
 			}
 
-			// We've found a sibling directory, so add the index file  from that directory as a sibling
+			// We've found a sibling directory, so add the index file from that directory as a sibling
 			if($this->settings['sibling_dirs'] && $this->curr_dir == $loop_granddir && $loop_file == 'index'.CONTENT_EXT){
 				$Page->is_dir = TRUE;
 				$siblings[]   = $Page;
@@ -49,7 +49,10 @@ class Family extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 			}
 		}
 
-		ksort($ancestors);
+		if($this->settings['ancestor_sort'] && $this->settings['ancestor_sort'] == 'desc')
+			ksort($ancestors);
+		else
+			krsort($ancestors);
 
 		$data['siblings']  = $siblings;
 		$data['ancestors'] = $ancestors;
@@ -82,6 +85,10 @@ class Family extends \Phile\Plugin\AbstractPlugin implements \Phile\Gateway\Even
 			$active_dir       = dirname($active_dir);
 		}
 
+		#echo '<pre>';
+		#print_r($ancestor_paths);
+
+#		print_r($ancestor_paths);
 		return $ancestor_paths;
 	}
 }

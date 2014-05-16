@@ -38,6 +38,15 @@ Default: TRUE
 
 Setting this option to `FALSE` will cause `{{ siblings }}` to *only* contain entries for pages.
 
+####`ancestor_sort`
+Type: *string*
+Default: 'asc'
+
+If 'asc' _(or anything other than 'desc')_, the 1st ancestor will be the homepage, and the last ancestor will be the parent.
+
+If 'desc', the 1st ancestor will be the parent, the 2nd the grandparent, etc.
+
+
 ## Examples
 
 Given this content structure:
