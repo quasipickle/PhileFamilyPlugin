@@ -1,11 +1,11 @@
 # PhileFamilyPlugin
-A plugin for providing sibling and ancestor records to Phile themes.  By default, Phile provides `{{ pages }}` to theme templates.  This plugin adds `{{ siblings }}` and `{{ ancestors }}`
+A plugin for providing sibling and ancestor records to Phile themes.  By default, Phile provides `{{ pages }}` to theme templates.  This plugin adds `{{ family.siblings }}`, `{{ family.ancestors }}`, and `{{ family.parent }}`
 
 **Questions? Comments?** Feel free to throw something in the issue tracker
 
 ## Installation
-1. Create the directory `plugins/family`
-2. Download and place  the repository files in that directory.
+1. Create the directory `plugins/quasipickle/family`
+2. Download and place the repository files in that directory.
 3. Modify your config file to include the plugin.  For example:
 
 ```php
@@ -15,18 +15,27 @@ $config['plugins'] = array(
 ```
 
 ## Usage
-Your template files will now have 2 new variables: `{{ siblings }}` and `{{ ancestors}}`.  
+Your template files will now have a new variable: `family`.  That variable is an array with 3 elements:
+
+1. `siblings`
+2. `ancestors`
+3. `parent`
+
 
 ### Siblings
-* `{{ siblings }}` will contain a Page object for each page & subdirectory in the current directory (except the current page).  
+* `{{ family.siblings }}` will contain a Page object for each page & subdirectory in the current directory (except the current page).  
   * For subdirectories, the Page object will point to the index.md file of the subdirectory.  
-* `{{ siblings }}` will be sorted in default sort order.
+* `{{ family.siblings }}` will be sorted in default sort order.
 
 ### Ancestors
-* `{{ ancestors }}` will contain a Page object for each parent, grandparent, etc. directory.
+* `{{ family.ancestors }}` will contain a Page object for each parent, grandparent, etc. directory.
 * If the current page is not the index page for a directory, then the index page will for the current directory will be the first ancestor.
-* `{{ ancestors }}` will be sorted from last ancestor to first ancestor (the parent directory)
-* Pages in the `{{ ancestors }}` array will have an additional `is_dir` property.
+* `{{ family.ancestors }}` will be sorted from last ancestor to first ancestor (the parent directory)
+* Pages in the `{{ family.ancestors }}` array will have an additional `is_dir` property.
+
+### Parent
+* `{{ family.parent }}` will contain the Page object for the parent directory of the currently viewed URL.  If the page has no parent, `{{ family.parent }}` will be `NULL`
+
 
 ## Options
 
