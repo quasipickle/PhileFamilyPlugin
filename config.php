@@ -7,6 +7,9 @@ return array(
 	# If FALSE, only actual pages will be included
 	'sibling_dirs' => TRUE,
 
+	# If TRUE, then the siblings will include the current page
+	'sibling_self' => TRUE,
+
 	# If 'desc', the 1st ancestor will be the parent, the 2nd the grandparent, etc
 	# If 'asc' (or anything other than 'desc'), the 1st ancestor will be the homepage,
 	# and the last ancestor will be the parent
